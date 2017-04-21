@@ -9,7 +9,7 @@ module Mongo
           klass = class_name.constantize
           klass_voteable = voteable[class_name]
           puts "Init stats for #{class_name}" if log
-          klass.collection.update({:votes => nil}, {
+          klass.collection.update_all({:votes => nil}, {
             '$set' => { :votes => DEFAULT_VOTES }
           }, {
             :safe => true,
